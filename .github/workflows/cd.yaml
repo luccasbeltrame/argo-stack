@@ -36,10 +36,10 @@ jobs:
         uses: karancode/kustomize-github-action@master
         with:
           kustomize_version: v4.5.5
+          kustomize_build_dir: 'k8s'
 
       - name: update k8s
-        run: | 
-          cd k8s
+        run: |
           kustomize edit set image goapp=luccasbeltrame/go:${{github.sha}}
           cat kustomization.yaml
 
