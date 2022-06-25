@@ -1,0 +1,22 @@
+name: CD
+on:
+  push:
+    branches:
+      - "master"
+jobs:
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: build and push
+        uses: docker/build-push-action@v1.1.0
+        with:
+          username: luccasbeltrame
+          password: ${{secrets.DOCKER_PASSWORDS}}
+          repository: luccasbeltrame/go
+          tags: ${{env.GITHUB_SHA}}, latest
+
+       
