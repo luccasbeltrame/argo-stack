@@ -32,6 +32,7 @@ jobs:
     steps:
       - uses: imranismail/setup-kustomize@v1
       - run: |
+          ls
           cd k8s 
           kustomize edit set image goapp=luccasbeltrame/go:${GITHUB_SHA}
           git add .
