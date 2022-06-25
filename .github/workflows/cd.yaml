@@ -25,4 +25,32 @@ jobs:
           push: true
           tags: luccasbeltrame/go:${{github.sha}}
 
+  deploy:
+    name: "Deploy"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: kustomize
+        uses: karancode/kustomize-github-action@master
+        with:
+          kustomize_version: v4.5.5
+
+      - name: update k8s
+        run: | 
+          cd k8s
+          kustomize edit set image goapp=luccasbeltrame/go:${{github.sha}}
+          cat kustomization.yaml
+
+      - name: commit
+        run: | 
+          git config --local user.email "action@github.com"
+          git config --local user.name "Deploy Action"
+          git commit -am "change image tag"
+      - name: push
+        uses: ad-m/github-push-action@master 
+
+
+
        
