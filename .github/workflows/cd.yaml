@@ -32,10 +32,13 @@ jobs:
     steps:
       - uses: imranismail/setup-kustomize@v1
       - run: |
+          cd k8s 
           kustomize edit set image goapp=luccasbeltrame/go:${GITHUB_SHA}
           git add .
           git commit -m "Set `app` image tag to `${GITHUB_SHA}`"
           git push
+
+
 
 
        
