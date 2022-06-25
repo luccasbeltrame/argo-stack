@@ -23,7 +23,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: luccasbeltrame/go:${{GITHUB_SHA}}
+          tags: luccasbeltrame/go:${{github.sha}}
 
   deploy:
     name: "Deploy"
