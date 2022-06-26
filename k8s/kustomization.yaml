@@ -10,4 +10,4 @@ namespace: goapp
 images:
 - name: goapp
   newName: luccasbeltrame/go
-  newTag: 1855be125d34b2f7d97cea18d71ef4711f7ec93f
+  newTag: 5067f79b1d26e730eb58b0b0e29a26efbff6a821
