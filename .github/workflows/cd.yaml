@@ -36,7 +36,7 @@ jobs:
           git add .
           git commit -m "Set `app` image tag to `${{github.sha}}`"
           git push
-        working-directory: k8s  
+        working-directory: ./k8s  
 
 
 
